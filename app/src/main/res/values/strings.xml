@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TrendyolClone</string>
+    <string name="title_home">Anasayfa</string>
+    <string name="title_go">Trendyol Go</string>
+    <string name="title_favorite">Favorilerim</string>
+    <string name="title_basket">Sepetim</string>
+    <string name="title_account">Hesabım</string>
+    <string name="dialog_text">Yeni sezon trend ürünler seni bekliyor.</string>
+    <string name="e_mail">E-Posta</string>
+    <string name="password">Şifre</string>
+    <string name="forgot_password">Şifremi Unuttum</string>
+    <string name="sign_in">Giriş Yap</string>
+    <string name="connect_with_facebook">Facebook \nile bağlan</string>
+    <string name="connect_with_google">Google \nile bağlan</string>
+    <string name="not_a_member">Üye değil misin?<font fgcolor='#F27A1A'> Üye ol</font> </string>
+
+
+</resources>

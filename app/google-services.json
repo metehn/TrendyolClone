@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "190821925341",
+    "project_id": "trendyolclone-9235b",
+    "storage_bucket": "trendyolclone-9235b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190821925341:android:5d4b00d3a9dfce4bd93634",
+        "android_client_info": {
+          "package_name": "com.metehanersoy.trendyolclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190821925341-hn8n91sg6vbl9par31at9giv887jbjof.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIpl7vznTySC-R46MaZ3SbpqcMbKYw1KM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190821925341-hn8n91sg6vbl9par31at9giv887jbjof.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

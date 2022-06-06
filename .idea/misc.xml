@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/custom_background_1.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/bottom_nav_text_color_selector.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/bottom_selector.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/custom_background_2.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/custom_background_3.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/custom_background_4.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/home_selector.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_eye_closed.xml" value="0.186" />
+        <entry key="app/src/main/res/drawable/ic_eye_open.xml" value="0.186" />
+        <entry key="app/src/main/res/drawable/ic_flower_smile.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_go.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_notifications.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.3515" />
+        <entry key="app/src/main/res/drawable/ic_trendyol_white.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/password_toglle.xml" value="0.256" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/custom_background_1.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/dialog_signin_signup.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_basket.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_trendyol_go.xml" value="0.35" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.35" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
