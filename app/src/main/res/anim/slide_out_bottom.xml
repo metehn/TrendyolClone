@@ -5,9 +5,9 @@
         android:fromYDelta="0%p"
         android:toYDelta="100%p"
         android:fillAfter="true"
-        android:duration="@android:integer/config_longAnimTime"/>
+        android:duration="@android:integer/config_mediumAnimTime"/>
     <alpha
-        android:duration="@android:integer/config_longAnimTime"
+        android:duration="@android:integer/config_mediumAnimTime"
         android:fromAlpha="1.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="0.0"/>

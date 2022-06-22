@@ -13,6 +13,7 @@
     <string name="connect_with_facebook">Facebook \nile bağlan</string>
     <string name="connect_with_google">Google \nile bağlan</string>
     <string name="not_a_member">Üye değil misin?<font fgcolor='#F27A1A'> Üye ol</font> </string>
-
+    <string name="no_product_in_basket">Sepetinizde ürün bulunmamaktadır</string>
+    <string name="continue_shopping">Alışverişe Devam Et</string>
 
 </resources>

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.16875" />
         <entry key="app/src/main/res/drawable-v24/custom_background_1.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/bottom_nav_text_color_selector.xml" value="0.2145" />
@@ -24,9 +25,12 @@
         <entry key="app/src/main/res/drawable/password_toglle.xml" value="0.256" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/custom_background_1.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/custom_row.xml" value="0.35" />
         <entry key="app/src/main/res/layout/dialog_signin_signup.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_account_auth.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_basket.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_control.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_trendyol_go.xml" value="0.35" />
