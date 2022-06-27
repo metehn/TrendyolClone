@@ -54,22 +54,6 @@ public class BasketRecyclerViewAdapter extends RecyclerView.Adapter<BasketRecycl
         try {
             Picasso.get().load(product.getImageURL()).into(holder.iv_custom_row);
 
-            /*
-            SpannableStringBuilder builder = new SpannableStringBuilder();
-
-            SpannableString str1= new SpannableString(list.get(position).getName() + " ");
-            str1.setSpan(new ForegroundColorSpan(Color.BLACK), 0, str1.length(), 0);
-            builder.append(str1);
-
-            SpannableString str2= new SpannableString(list.get(position).getDescription());
-            str2.setSpan(new ForegroundColorSpan(Color.GRAY), 0, str2.length(), 0);
-            builder.append(str2);
-
-            holder.tv_productName_custom_row.setText( builder, TextView.BufferType.SPANNABLE);
-*/
-
-            String styledText = "<b><font color='red'>Pratik</font><b/>" ;
-
             String nameAndDescription = "<b><font color='black'>" + list.get(position).getName() + "</font></b> " + list.get(position).getDescription();
             holder.tv_productName_custom_row.setText( Html.fromHtml(nameAndDescription));
 

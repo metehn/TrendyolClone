@@ -158,11 +158,8 @@ public class AccountFragment extends Fragment {
                         acb_Dialog_SignIn.setVisibility(View.VISIBLE);
                     }
                 });
-
             }
-
         });
-
 
         acb_FragmentAccount_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,9 +168,9 @@ public class AccountFragment extends Fragment {
 
             }
         });
-
+/*
         // This callback will only be called when MyFragment is at least Started.
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+        OnBackPressedCallback callback = new OnBackPressedCallback(true  ) {//enabled by default
             @Override
             public void handleOnBackPressed() {
                 dialog.dismiss();
@@ -181,7 +178,7 @@ public class AccountFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         // The callback can be enabled or disabled here or in handleOnBackPressed()
-
+*/
 
         return view;
     }
