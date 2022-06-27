@@ -3,15 +3,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.TrendyolGoFragment"
-    android:background="@color/base">
+    android:background="@color/base"
+    android:orientation="vertical">
 
-
-    <TextView
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Trendyol Go"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:elevation="4dp"
+        app:title="@string/title_go"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginHorizontal="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="360dp"
+                    android:src="@drawable/go1"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="2dp"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="360dp"
+                    android:src="@drawable/go2"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="2dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="180dp"
+                    android:src="@drawable/go3"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="2dp"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="180dp"
+                    android:src="@drawable/go4"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="2dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="180dp"
+                    android:src="@drawable/go5"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="2dp"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="180dp"
+                    android:src="@drawable/go6"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="2dp"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
 
 </LinearLayout>

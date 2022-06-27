@@ -14,6 +14,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.metehanersoy.trendyolclone.Class.MyProduct;
 import com.metehanersoy.trendyolclone.Fragment.AccountFragment;
 import com.metehanersoy.trendyolclone.Fragment.AccountFragmentAuth;
 import com.metehanersoy.trendyolclone.Fragment.BasketFragment;
@@ -21,6 +22,8 @@ import com.metehanersoy.trendyolclone.Fragment.FavoritesFragment;
 import com.metehanersoy.trendyolclone.Fragment.HomePageFragment;
 import com.metehanersoy.trendyolclone.Fragment.TrendyolGoFragment;
 import com.metehanersoy.trendyolclone.R;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
-
+    public static ArrayList<MyProduct> basketList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

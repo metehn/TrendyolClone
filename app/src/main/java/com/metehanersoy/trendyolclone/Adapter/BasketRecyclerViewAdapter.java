@@ -19,6 +19,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
+import com.metehanersoy.trendyolclone.Activity.MainActivity;
 import com.metehanersoy.trendyolclone.Class.MyProduct;
 import com.metehanersoy.trendyolclone.R;
 import com.squareup.picasso.Picasso;
@@ -30,7 +31,6 @@ public class BasketRecyclerViewAdapter extends RecyclerView.Adapter<BasketRecycl
 
     private Context mContext;
     private ArrayList<MyProduct> list;
-
 
     public BasketRecyclerViewAdapter(Context mContext, ArrayList<MyProduct> list) {
         this.mContext = mContext;
@@ -69,6 +69,13 @@ public class BasketRecyclerViewAdapter extends RecyclerView.Adapter<BasketRecycl
             Toast.makeText(mContext, e.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
         }
 
+       holder.acb_custom_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.basketList.add(product);
+                Toast.makeText(mContext, position+"", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -92,12 +99,6 @@ public class BasketRecyclerViewAdapter extends RecyclerView.Adapter<BasketRecycl
             acb_custom_row = itemView.findViewById(R.id.acb_custom_row);
 
 
-            acb_custom_row.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
     }
 }

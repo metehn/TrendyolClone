@@ -46,6 +46,7 @@ public class BasketFragment extends Fragment {
     BasketRecyclerViewAdapter adapter;
     ArrayList<MyProduct> list = new ArrayList<>();
 
+
     Context mContext;
     Activity mActivity;
 

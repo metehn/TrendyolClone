@@ -3,15 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.HomePageFragment"
-    android:background="@color/base">
+    android:background="@color/base"
+    android:orientation="vertical">
 
 
-    <TextView
+   <androidx.appcompat.widget.Toolbar
+       android:layout_width="match_parent"
+       android:layout_height="56dp"
+       android:elevation="4dp"
+       app:title="@string/title_home"
+       android:background="@color/white"
+       app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="HomePageFragment"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:gravity="center">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/work_in_progress"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
 
 </LinearLayout>
