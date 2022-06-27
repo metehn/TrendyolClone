@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_custom_row"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_productName_custom_row"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
     <TextView
         android:id="@+id/tv_productName_custom_row"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="1111111111"
+        android:layout_marginStart="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_custom_row"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -31,7 +38,10 @@
         android:id="@+id/tv_fastDelivery_custom_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginLeft="12dp"
+        android:text="@string/fast_delivery"
+        android:textColor="@color/green"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_custom_row"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/iv_custom_row"
@@ -43,26 +53,34 @@
         android:id="@+id/tv_productPrice_custom_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@id/iv_custom_row"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_fastDelivery_custom_row"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:textColor="@color/pumpkin"
+        android:textStyle="bold"
+        android:text="TL"
+        android:layout_marginLeft="12dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/acb_custom_row"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        android:text="Sepete Ekle"
-        android:textSize="10sp"
+        android:text="@string/add_basket"
+        android:textSize="11.5sp"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/tv_productPrice_custom_row"
         app:layout_constraintTop_toBottomOf="@+id/tv_productName_custom_row"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:background="@drawable/custom_background_6"
+        android:textColor="@color/pumpkin"
+        android:elevation="3dp"
+        app:itemRippleColor="@color/black"
+        android:layout_margin="3dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

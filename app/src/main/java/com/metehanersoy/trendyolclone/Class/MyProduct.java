@@ -9,7 +9,7 @@ import lombok.*;
 public class MyProduct {
 
     String id;
-    int amount = 1;
+    int amount;
 
     String name;
     String description;

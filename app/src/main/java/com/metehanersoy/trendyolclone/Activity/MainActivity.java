@@ -49,14 +49,7 @@ public class MainActivity extends AppCompatActivity {
         initializeUiObjects();
 
         mAuth = FirebaseAuth.getInstance();
-        mAuth.signOut();
-
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello, World!22222");
-
+        mAuth.signOut();  //!!!!
 
         //Initialize fragment manager
         fragmentManager = getSupportFragmentManager();

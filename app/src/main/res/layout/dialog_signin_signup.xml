@@ -108,7 +108,7 @@
                     android:inputType="textEmailAddress"
                     android:lines="1"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
+                    android:textColorHint="@color/grey"
                     android:textSize="14sp"
                     android:windowSoftInputMode="stateAlwaysHidden" />
 
@@ -130,7 +130,7 @@
                     android:inputType="textPassword"
                     android:lines="1"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
+                    android:textColorHint="@color/grey"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -197,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:lines="2"
                         android:text="@string/connect_with_facebook"
-                        android:textColor="@color/gray" />
+                        android:textColor="@color/grey" />
 
                 </LinearLayout>
 

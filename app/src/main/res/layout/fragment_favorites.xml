@@ -67,7 +67,7 @@
                 android:layout_marginTop="12dp"
                 android:gravity="center"
                 android:text="@string/title_favorite"
-                android:textColor="@color/gray"
+                android:textColor="@color/grey"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -78,7 +78,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:text="Favorilerinizi görüntüleyebilmek için lütfen giriş yapın. Beğendiğiniz ürünler yeniden satışa çıktığında haberdar olmak için ürünleri favorilere ekleyebilirsiniz."
-                android:textColor="@color/gray"
+                android:textColor="@color/grey"
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatButton

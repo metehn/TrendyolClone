@@ -11,8 +11,11 @@
         <entry key="app/src/main/res/drawable/custom_background_2.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/custom_background_3.xml" value="0.256" />
         <entry key="app/src/main/res/drawable/custom_background_4.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/custom_background_5.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/custom_background_6.xml" value="0.2405" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.1685" />
         <entry key="app/src/main/res/drawable/ic_eye_closed.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_eye_open.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_flower_smile.xml" value="0.2145" />
@@ -23,6 +26,7 @@
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.3515" />
         <entry key="app/src/main/res/drawable/ic_trendyol_white.xml" value="0.256" />
         <entry key="app/src/main/res/drawable/password_toglle.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/vertical_divider.xml" value="0.2405" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/custom_background_1.xml" value="0.35" />
         <entry key="app/src/main/res/layout/custom_row.xml" value="0.35" />

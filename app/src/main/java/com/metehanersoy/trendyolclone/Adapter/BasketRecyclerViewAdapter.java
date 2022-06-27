@@ -2,6 +2,11 @@ package com.metehanersoy.trendyolclone.Adapter;
 
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
 import com.metehanersoy.trendyolclone.Class.MyProduct;
 import com.metehanersoy.trendyolclone.R;
 import com.squareup.picasso.Picasso;
@@ -24,6 +30,7 @@ public class BasketRecyclerViewAdapter extends RecyclerView.Adapter<BasketRecycl
 
     private Context mContext;
     private ArrayList<MyProduct> list;
+
 
     public BasketRecyclerViewAdapter(Context mContext, ArrayList<MyProduct> list) {
         this.mContext = mContext;
@@ -46,7 +53,25 @@ public class BasketRecyclerViewAdapter extends RecyclerView.Adapter<BasketRecycl
 
         try {
             Picasso.get().load(product.getImageURL()).into(holder.iv_custom_row);
-            holder.tv_productName_custom_row.setText(list.get(position).getDescription());
+
+            /*
+            SpannableStringBuilder builder = new SpannableStringBuilder();
+
+            SpannableString str1= new SpannableString(list.get(position).getName() + " ");
+            str1.setSpan(new ForegroundColorSpan(Color.BLACK), 0, str1.length(), 0);
+            builder.append(str1);
+
+            SpannableString str2= new SpannableString(list.get(position).getDescription());
+            str2.setSpan(new ForegroundColorSpan(Color.GRAY), 0, str2.length(), 0);
+            builder.append(str2);
+
+            holder.tv_productName_custom_row.setText( builder, TextView.BufferType.SPANNABLE);
+*/
+
+            String styledText = "<b><font color='red'>Pratik</font><b/>" ;
+
+            String nameAndDescription = "<b><font color='black'>" + list.get(position).getName() + "</font></b> " + list.get(position).getDescription();
+            holder.tv_productName_custom_row.setText( Html.fromHtml(nameAndDescription));
 
             if (product.getFastDelivery()) {
                 holder.tv_fastDelivery_custom_row.setVisibility(View.VISIBLE);

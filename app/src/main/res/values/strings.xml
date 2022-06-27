@@ -15,5 +15,9 @@
     <string name="not_a_member">Üye değil misin?<font fgcolor='#F27A1A'> Üye ol</font> </string>
     <string name="no_product_in_basket">Sepetinizde ürün bulunmamaktadır</string>
     <string name="continue_shopping">Alışverişe Devam Et</string>
+    <string name="best_seller">Çok Satanlar</string>
+    <string name="see_all">Tümünü Gör</string>
+    <string name="fast_delivery">Hızlı Teslimat</string>
+    <string name="add_basket">Sepete Ekle</string>
 
 </resources>

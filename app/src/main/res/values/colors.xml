@@ -11,7 +11,8 @@
     <color name="pumpkin">#F27A1A</color>
     <color name="silver">#BBBBBB</color>
     <color name="silver_2">#C8C8C8</color>
-    <color name= "gray">#717171</color>
+    <color name= "grey">#717171</color>
     <color name="red">#FF0000</color>
     <color name="coral">#FF5B51</color>
+    <color name="green">#0BC15C</color>
 </resources>
