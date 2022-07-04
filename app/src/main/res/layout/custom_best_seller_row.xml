@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:text="@string/fast_delivery"
-        android:textColor="@color/green"
+        android:textColor="@color/green_shamrock"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_custom_row"
         app:layout_constraintHorizontal_bias="0.0"

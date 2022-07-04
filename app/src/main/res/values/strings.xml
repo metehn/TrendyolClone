@@ -19,5 +19,6 @@
     <string name="see_all">Tümünü Gör</string>
     <string name="fast_delivery">Hızlı Teslimat</string>
     <string name="add_basket">Sepete Ekle</string>
+    <string name="free_shipping">Kargo Bedava</string>
 
 </resources>

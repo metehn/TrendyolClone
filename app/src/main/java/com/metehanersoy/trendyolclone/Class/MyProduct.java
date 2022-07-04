@@ -1,30 +1,35 @@
 package com.metehanersoy.trendyolclone.Class;
 
-import lombok.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class MyProduct {
 
-    String id;
-    int amount;
+    String id; // *
+    String name; //*
+    String description; //*
+    String imageURL; //*
+    String type; //* giysi, kişisel bakım
+    ArrayList<String> seller; //* Listenin ilk elemanını al
+    int stock; // seller tablosundan çek
+    double price; // seller tablosundan çek
+    Boolean fastDelivery; //seller tablosundan çek
+    int amount; //otomatik olarak ayarlandı. Baskete eklendiğinde artırılabilir
+    String sellerName;// seller tablosundan çek
+    double sellerRate;// seller tablosundan çek
 
-    String name;
-    String description;
-    double price;
-    String imageURL;
-    String type; //giysi, kişisel bakım
-    Boolean fastDelivery;
 
-    public MyProduct(int amount, String name, String description, double price, String imageURL, String type, Boolean fastDelivery) {
-        this.amount = amount;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.imageURL = imageURL;
-        this.type = type;
-        this.fastDelivery = fastDelivery;
+    //Returns selled Id
+    public String getSellerId() {
+        return seller.get(0);
     }
 }

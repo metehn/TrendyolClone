@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="14dp">
+
+    <CheckBox
+        android:id="@+id/cb_Basket_CardView_Child"
+        android:layout_width="14dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_Basket_CardView_Child"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.367" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+
+        android:id="@+id/iv_Basket_CardView_Child"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/linearLayout"
+        app:layout_constraintStart_toEndOf="@+id/cb_Basket_CardView_Child"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_Basket_CardView_Child"
+        app:layout_constraintTop_toTopOf="@+id/iv_Basket_CardView_Child"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_productName_Basket_CardView_Child"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="18dp"/>
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            app:srcCompat="@drawable/ic_trash"
+            android:layout_marginLeft="15dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_Basket_CardView_Child"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:background="@drawable/custom_background_7"
+        android:layout_marginLeft="18dp">
+
+        <ImageView
+            android:id="@+id/iv_Decrease_CardView_Child"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_decrease"
+            android:padding="10dp"
+            android:layout_margin="2dp"/>
+
+        <TextView
+            android:id="@+id/tv_ProductAmount_Basket_CardView_Child"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:text="1"
+            android:textStyle="bold"
+            android:maxLength="4"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginVertical="2dp"
+            android:gravity="center"
+            android:background="@drawable/custom_background_8"
+            android:textColor="@color/pumpkin"/>
+
+
+        <ImageView
+            android:id="@+id/iv_Increase_CardView_Child"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_increase"
+           android:padding="10dp"
+            android:layout_margin="2dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_FastDelivery_Basket_CardView_Child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/iv_Basket_CardView_Child"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="18dp"/>
+
+    <TextView
+        android:id="@+id/tv_Price_Basket_CardView_Child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TL"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:textColor="@color/pumpkin"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

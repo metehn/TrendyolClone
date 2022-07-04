@@ -2,6 +2,7 @@ package com.metehanersoy.trendyolclone.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -14,7 +15,6 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.metehanersoy.trendyolclone.Class.MyProduct;
 import com.metehanersoy.trendyolclone.Fragment.AccountFragment;
 import com.metehanersoy.trendyolclone.Fragment.AccountFragmentAuth;
 import com.metehanersoy.trendyolclone.Fragment.BasketFragment;
@@ -23,9 +23,11 @@ import com.metehanersoy.trendyolclone.Fragment.HomePageFragment;
 import com.metehanersoy.trendyolclone.Fragment.TrendyolGoFragment;
 import com.metehanersoy.trendyolclone.R;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
+
+    public static final String LOG_TAG = "LogMetehan";
+    public static final String PRODUCTS = "Products";
+    public static final String BEST_SELLER = "BestSeller";
 
     public static final String ACCOUNT_FRAGMENT = "AccountFragment";
     public static final String ACCOUNT_FRAGMENT_AUTH = "AccountFragmentAuth";
@@ -40,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
 
     FirebaseAuth mAuth;
-
-    public static ArrayList<MyProduct> basketList = new ArrayList<>();
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         initializeUiObjects();
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         mAuth.signOut();  //!!!!
 
         //Initialize fragment manager
@@ -195,5 +198,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public Fragment findFragment(String tag){
+        Fragment fragment = fragmentManager.findFragmentByTag(tag);
+        return  fragment;
+    }
 
 }
