@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.1685" />
         <entry key="app/src/main/res/drawable/ic_decrease.xml" value="0.2605" />
+        <entry key="app/src/main/res/drawable/ic_decrease_disabled.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_eye_closed.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_eye_open.xml" value="0.186" />
         <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.2605" />
@@ -28,6 +29,7 @@
         <entry key="app/src/main/res/drawable/ic_google.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_increase.xml" value="0.2605" />
+        <entry key="app/src/main/res/drawable/ic_increase_disabled.xml" value="0.222" />
         <entry key="app/src/main/res/drawable/ic_notifications.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_package.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.256" />

@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mAuth.signOut();  //!!!!
-
         //Initialize fragment manager
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.ll_1_FragmentAccount, new HomePageFragment(), HOME_PAGE_FRAGMENT).commit();

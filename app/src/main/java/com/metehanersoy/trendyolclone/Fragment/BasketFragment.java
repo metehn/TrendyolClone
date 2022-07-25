@@ -174,4 +174,7 @@ public class BasketFragment extends Fragment {
     }
 
 
+    public void checkUncheck( MyProduct myProduct ){
+
+    }
 }

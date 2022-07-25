@@ -12,7 +12,12 @@ import lombok.Setter;
 public class BasketParentItem {
     ArrayList<MyProduct> childItemList = new ArrayList<>();
 
+    boolean checked=true;
+
     public void addToList(MyProduct myProduct){
         childItemList.add(myProduct);
     }
+    public boolean removeFromList(MyProduct myProduct){ return childItemList.remove(myProduct); }
+
+
 }
