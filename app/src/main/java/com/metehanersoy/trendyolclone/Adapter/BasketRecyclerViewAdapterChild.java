@@ -261,16 +261,19 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
         for (BasketParentItem b : Basket.basketList) {
 
             boolean temp = b.getChildItemList().remove(myProduct);
-            if (b.getChildItemList().isEmpty()) {
-                //remove basketparent item from basket parent
-                Basket.basketList.remove(b);
-            }
-            Basket.bestSeller.add(myProduct);
-            notifyDataChangeSetChildAndParent();
-            //notifyDataSetChanged(); basketFragmenttan basketNotifyDataSetChanged() çağırdığımız için tekrardan çağırmamıza gerek yok.
-            if (temp) {
+
+            if(temp){
+
+                Basket.bestSeller.add(myProduct);
+                if (b.getChildItemList().isEmpty()) {
+                    //remove basketparent item from basket parent
+                    Basket.basketList.remove(b);
+                }
+                notifyDataChangeSetChildAndParent();
+
                 return;
             }
+
         }
 
     }
