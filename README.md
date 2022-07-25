@@ -1,4 +1,6 @@
 # TrendyolClone
 Trendyol Clone
 
-![25x25](https://github.com/metehn/TrendyolClone/blob/master/trendyol_screen_record.gif)
+![](https://github.com/metehn/TrendyolClone/blob/master/trendyol_screen_record.gif)
+
+<img src="[https://github.com/favicon.ico](https://github.com/metehn/TrendyolClone/blob/master/trendyol_screen_record.gif)" width="48">
