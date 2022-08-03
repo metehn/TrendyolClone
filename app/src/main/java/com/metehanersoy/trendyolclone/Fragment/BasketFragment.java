@@ -1,6 +1,8 @@
 package com.metehanersoy.trendyolclone.Fragment;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,12 +17,23 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,29 +41,38 @@ import com.metehanersoy.trendyolclone.Activity.MainActivity;
 import com.metehanersoy.trendyolclone.Adapter.BasketRecyclerViewAdapterParent;
 import com.metehanersoy.trendyolclone.Adapter.BestSellerRecyclerViewAdapter;
 import com.metehanersoy.trendyolclone.Class.Basket;
+import com.metehanersoy.trendyolclone.Class.BasketParentItem;
 import com.metehanersoy.trendyolclone.Class.MyProduct;
 import com.metehanersoy.trendyolclone.R;
+
+import java.text.DecimalFormat;
 
 
 public class BasketFragment extends Fragment {
 
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     DatabaseReference mDatabase;
+    FirebaseAuth mAuth;
 
     RecyclerView rv_bestSeller_FragmentBasket, rv_parent_FragmentBasket;
-    AppCompatButton acb_FragmentBasket;
+    AppCompatButton acb_FragmentBasket, acb_pay_FragmentBasket;
     NestedScrollView nestedScrollView_BasketFragment;
-    LinearLayout ll_BasketFragment;
+    LinearLayout ll_BasketFragment, ll_totalPrice_BasketFragment;
     BestSellerRecyclerViewAdapter adapter;
     BasketRecyclerViewAdapterParent parentAdapter;
     Activity mActivity;
+    TextView tv_totalPrice_BasketFragment;
 
+    Dialog paymentDialog,dialog;
+    ProgressBar pb_Dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mActivity = getActivity();
+        mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child(MainActivity.BEST_SELLER).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -85,7 +107,7 @@ public class BasketFragment extends Fragment {
                                             myProduct.setAmount(1);
                                         }
                                         Basket.bestSeller.add(myProduct);
-                                       // adapter.notifyDataSetChanged();// bu satırı koymazsan ürünler yüklenmez !
+                                        // adapter.notifyDataSetChanged();// bu satırı koymazsan ürünler yüklenmez !
                                         bestSellerNotifyDataSetChanged();
                                     }
                                 });
@@ -93,7 +115,7 @@ public class BasketFragment extends Fragment {
                                 mDatabase.child("Seller").child(sellerId).get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
                                     @Override
                                     public void onSuccess(DataSnapshot dataSnapshot) {
-                                        myProduct.setSellerName( (String) dataSnapshot.child("name").getValue() );
+                                        myProduct.setSellerName((String) dataSnapshot.child("name").getValue());
                                         myProduct.setSellerRate((Double) dataSnapshot.child("rate").getValue());
 
                                     }
@@ -102,7 +124,6 @@ public class BasketFragment extends Fragment {
                             }
                         }
                     });
-
 
                 }
             }
@@ -119,6 +140,9 @@ public class BasketFragment extends Fragment {
         acb_FragmentBasket = view.findViewById(R.id.acb_FragmentBasket);
         rv_bestSeller_FragmentBasket = view.findViewById(R.id.rv_bestSeller_FragmentBasket);
         rv_parent_FragmentBasket = view.findViewById(R.id.rv_parent_FragmentBasket);
+        ll_totalPrice_BasketFragment = view.findViewById(R.id.ll_totalPrice_BasketFragment);
+        tv_totalPrice_BasketFragment = view.findViewById(R.id.tv_totalPrice_BasketFragment);
+        acb_pay_FragmentBasket = view.findViewById(R.id.acb_pay_FragmentBasket);
 
         //Adapters
         adapter = new BestSellerRecyclerViewAdapter(mActivity, Basket.bestSeller);
@@ -153,28 +177,69 @@ public class BasketFragment extends Fragment {
             }
         });
 
+        acb_pay_FragmentBasket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                /*
+                if(mAuth.getCurrentUser() != null){
+                    paymentDialog.show();
+                }else{
+                    dialog.show();
+                }
+*/
+                ((MainActivity)mActivity).showSignInFragment();
+
+
+            }
+        });
+
         return view;
     }
-    public void bestSellerNotifyDataSetChanged(){
-        if(adapter!=null){
+
+    public void bestSellerNotifyDataSetChanged() {
+        if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
     }
-    public void basketNotifyDataSetChanged(){
-        if(!Basket.basketList.isEmpty()){
+
+    public void basketNotifyDataSetChanged() {
+        if (!Basket.basketList.isEmpty()) {
             ll_BasketFragment.setVisibility(View.GONE);
             rv_parent_FragmentBasket.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             ll_BasketFragment.setVisibility(View.VISIBLE);
             rv_parent_FragmentBasket.setVisibility(View.GONE);
         }
-        if(parentAdapter != null){
+        if (parentAdapter != null) {
             parentAdapter.notifyDataSetChanged();
         }
     }
 
+    public void updateTotalPrice() {
+        if (Basket.basketList.isEmpty()) {
 
-    public void checkUncheck( MyProduct myProduct ){
+            ll_totalPrice_BasketFragment.setVisibility(View.INVISIBLE);
+
+        } else {
+            ll_totalPrice_BasketFragment.setVisibility(View.VISIBLE);
+        }
+        double totalPrice = 0.00;
+
+        for (BasketParentItem b : Basket.basketList) {
+
+            for (MyProduct p : b.getChildItemList()) {
+
+                if (p.isChecked()) {
+                    totalPrice += (p.getPrice() * p.getAmount());
+                }
+
+            }
+
+        }
+
+        tv_totalPrice_BasketFragment.setText(df.format(totalPrice)+ " TL"); //Decimal objesiyle stringe çevir
 
     }
+
 }

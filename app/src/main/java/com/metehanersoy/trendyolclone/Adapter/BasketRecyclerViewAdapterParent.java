@@ -9,14 +9,19 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.metehanersoy.trendyolclone.Activity.MainActivity;
+import com.metehanersoy.trendyolclone.Class.Basket;
 import com.metehanersoy.trendyolclone.Class.BasketParentItem;
 import com.metehanersoy.trendyolclone.Class.MyProduct;
+import com.metehanersoy.trendyolclone.Fragment.BasketFragment;
 import com.metehanersoy.trendyolclone.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +33,9 @@ public class BasketRecyclerViewAdapterParent extends RecyclerView.Adapter<Basket
     private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
 
     BasketRecyclerViewAdapterChild childItemAdapter;
+
+    private static final DecimalFormat df = new DecimalFormat("0.0");
+
 
     public BasketRecyclerViewAdapterParent(Activity mActivity, ArrayList<BasketParentItem> list) {
         this.mActivity = mActivity;
@@ -51,6 +59,30 @@ public class BasketRecyclerViewAdapterParent extends RecyclerView.Adapter<Basket
         BasketParentItem basketParentItem = list.get(position);
 
         holder.tv_Basket_Parent.setText(basketParentItem.getChildItemList().get(0).getSellerName());
+        holder.tv_Basket_Parent_Rate.setText( df.format( basketParentItem.getChildItemList().get(0).getSellerRate() ) + "" );
+
+        int pL = holder.tv_Basket_Parent_Rate.getPaddingLeft();
+        int pT = holder.tv_Basket_Parent_Rate.getPaddingTop();
+        int pR = holder.tv_Basket_Parent_Rate.getPaddingRight();
+        int pB = holder.tv_Basket_Parent_Rate.getPaddingBottom();
+
+
+
+        if( basketParentItem.getChildItemList().get(0).getSellerRate() >=8.5 ){
+
+            //holder.tv_Basket_Parent_Rate.setBackground(ContextCompat.getDrawable(mActivity, R.drawable.custom_background_1));
+            holder.tv_Basket_Parent_Rate.setBackgroundResource(R.drawable.custom_background_9);
+        }else if(basketParentItem.getChildItemList().get(0).getSellerRate() >=5){
+
+            holder.tv_Basket_Parent_Rate.setBackgroundResource(R.drawable.custom_background_10);
+        }else{
+
+            holder.tv_Basket_Parent_Rate.setBackgroundResource(R.drawable.custom_background_11);
+        }
+
+        holder.tv_Basket_Parent_Rate.setPadding(pL, pT, pR, pB);
+
+
         // For the created instance,
         // get the title and set it
         // as the text for the TextView
@@ -93,29 +125,33 @@ public class BasketRecyclerViewAdapterParent extends RecyclerView.Adapter<Basket
             @Override
             public void onClick(View view) {
 
-             /*
+
                 BasketParentItem b = list.get(position);
                 ArrayList<MyProduct> tempList = b.getChildItemList();
 
                 if (b.isChecked()) {
+                    holder.cb_Basket_CardView.setChecked(false);
+                    list.get(position).setChecked(false);
                     //check all childs and notifydatachanges for both parent adapter and child adapter
-                    for (MyProduct p : tempList) {
-                        p.setChecked(true);
-                    }
-
-
-                } else {
-                    //uncheck all childs and notifydatachanges for both parent adapter and child adapter
                     for (MyProduct p : tempList) {
                         p.setChecked(false);
                     }
 
+
+                } else {
+                    holder.cb_Basket_CardView.setChecked(true);
+                    list.get(position).setChecked(true);
+                    //uncheck all childs and notifydatachanges for both parent adapter and child adapter
+                    for (MyProduct p : tempList) {
+                        p.setChecked(true);
+                    }
+
                 }
+                ((BasketFragment)((MainActivity)mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
+                childItemAdapter.notifyDataSetChanged();
                 notifyDataSetChanged();
-                if (childItemAdapter != null) {
-                    childItemAdapter.notifyDataSetChanged();
-                }
-            */
+
+
             }
         });
 
@@ -129,7 +165,7 @@ public class BasketRecyclerViewAdapterParent extends RecyclerView.Adapter<Basket
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_Basket_Parent;
+        TextView tv_Basket_Parent, tv_Basket_Parent_Rate;
         RecyclerView rv_child_Basket_Parent;
         CheckBox cb_Basket_CardView;
 
@@ -137,6 +173,7 @@ public class BasketRecyclerViewAdapterParent extends RecyclerView.Adapter<Basket
             super(itemView);
 
             tv_Basket_Parent = itemView.findViewById(R.id.tv_Basket_Parent);
+            tv_Basket_Parent_Rate = itemView.findViewById(R.id.tv_Basket_Parent_Rate);
             rv_child_Basket_Parent = itemView.findViewById(R.id.rv_child_Basket_Parent);
             cb_Basket_CardView = itemView.findViewById(R.id.cb_Basket_CardView);
 

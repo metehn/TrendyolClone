@@ -8,6 +8,10 @@
         <entry key="app/src/main/res/drawable/bottom_nav_icon_color_selector.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/bottom_nav_text_color_selector.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/bottom_selector.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/custom_background_10.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/custom_background_11.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/custom_background_12.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/custom_background_13.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/custom_background_2.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/custom_background_3.xml" value="0.256" />
         <entry key="app/src/main/res/drawable/custom_background_4.xml" value="0.256" />
@@ -15,9 +19,18 @@
         <entry key="app/src/main/res/drawable/custom_background_6.xml" value="0.2405" />
         <entry key="app/src/main/res/drawable/custom_background_7.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/custom_background_8.xml" value="0.2605" />
+        <entry key="app/src/main/res/drawable/custom_background_9.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/home_selector.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/ic_arrow__up.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.2845" />
         <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/ic_arrow_right_gray.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/ic_arrow_right_grey.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/ic_arrrow_up.xml" value="0.2625" />
+        <entry key="app/src/main/res/drawable/ic_check_box.xml" value="0.2805" />
+        <entry key="app/src/main/res/drawable/ic_checkbox.xml" value="0.2805" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/ic_decrease.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_decrease_disabled.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_eye_closed.xml" value="0.186" />
@@ -30,13 +43,17 @@
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_increase.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_increase_disabled.xml" value="0.222" />
+        <entry key="app/src/main/res/drawable/ic_info.xml" value="0.2825" />
+        <entry key="app/src/main/res/drawable/ic_new.xml" value="0.2805" />
         <entry key="app/src/main/res/drawable/ic_notifications.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/ic_package.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/ic_plus2.xml" value="0.2805" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.3515" />
         <entry key="app/src/main/res/drawable/ic_trash.xml" value="0.2605" />
         <entry key="app/src/main/res/drawable/ic_trendyol_white.xml" value="0.256" />
         <entry key="app/src/main/res/drawable/password_toglle.xml" value="0.256" />
+        <entry key="app/src/main/res/drawable/radio_button_selector.xml" value="0.2805" />
         <entry key="app/src/main/res/drawable/vertical_divider.xml" value="0.2405" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/custom_background_1.xml" value="0.35" />
@@ -48,6 +65,7 @@
         <entry key="app/src/main/res/layout/custom_best_seller_row.xml" value="0.35" />
         <entry key="app/src/main/res/layout/custom_row.xml" value="0.35" />
         <entry key="app/src/main/res/layout/custom_row_2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/dialog_payment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_signin_signup.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_account_auth.xml" value="0.35" />
@@ -55,6 +73,7 @@
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_favorites.xml" value="0.35" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_payment.xml" value="0.31574074074074077" />
         <entry key="app/src/main/res/layout/fragment_trendyol_go.xml" value="0.35" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.35" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.186" />

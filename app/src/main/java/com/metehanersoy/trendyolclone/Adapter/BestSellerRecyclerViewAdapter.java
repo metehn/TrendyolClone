@@ -95,7 +95,6 @@ public class BestSellerRecyclerViewAdapter extends RecyclerView.Adapter<BestSell
         return list.size();
     }
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_custom_row;
         TextView tv_productName_custom_row, tv_fastDelivery_custom_row, tv_productPrice_custom_row;
@@ -118,10 +117,12 @@ public class BestSellerRecyclerViewAdapter extends RecyclerView.Adapter<BestSell
             basketParentItem.addToList(myProduct);
             Basket.basketList.add(basketParentItem);
         } else {
-            Toast.makeText(mActivity, "else", Toast.LENGTH_SHORT).show();
+
             for (BasketParentItem parentItem : Basket.basketList) {
                 if (parentItem.getChildItemList().get(0).getSellerId().equals(myProduct.getSellerId())) {
                     parentItem.getChildItemList().add(myProduct);
+
+                    ((BasketFragment)((MainActivity)mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
                     return;
                 }
             }
@@ -130,7 +131,9 @@ public class BestSellerRecyclerViewAdapter extends RecyclerView.Adapter<BestSell
             Basket.basketList.add(newParentItem);
 
         }
-
+        ((BasketFragment)((MainActivity)mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
     }
+
+
 }
 

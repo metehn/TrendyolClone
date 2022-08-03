@@ -76,5 +76,10 @@
 
     </style>
 
+    <style name="MyRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="buttonTint">@drawable/radio_button_selector</item>
+    </style>
+
+
 
 </resources>

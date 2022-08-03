@@ -12,12 +12,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="15dp"
+        android:gravity="center_vertical">
 
         <CheckBox
             android:id="@+id/cb_Basket_CardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="14dp"
+            android:layout_height="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/pumpkin"/>
 
 
         <TextView
@@ -27,7 +32,26 @@
             android:text="Satıcı"
             android:textColor="@color/grey"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_Basket_Parent_Rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="1dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="12sp"
+            android:text="9.9"
+            android:background="@drawable/custom_background_2"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_arrow_right_grey"/>
 
 
     </LinearLayout>

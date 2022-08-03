@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toStartOf="@+id/iv_Basket_CardView_Child"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.367" />
+        app:layout_constraintVertical_bias="0.367"
+        android:buttonTint="@color/pumpkin"/>
 
     <com.google.android.material.imageview.ShapeableImageView
 
@@ -102,7 +103,6 @@
                 android:background="@drawable/custom_background_8"
                 android:gravity="center"
                 android:maxLength="4"
-                android:text="1"
                 android:textColor="@color/pumpkin"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />

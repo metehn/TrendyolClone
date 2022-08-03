@@ -65,21 +65,46 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        MyProduct product = list.get(position);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        if( product.isChecked() ){
+
+        if (list.get(position).isChecked()) {
             holder.cb_Basket_CardView_Child.setChecked(true);
-        }else{
+        } else {
             holder.cb_Basket_CardView_Child.setChecked(false);
         }
 
+
         try {
-            Picasso.get().load(product.getImageURL()).into(holder.iv_Basket_CardView_Child);
+            Picasso.get().load(list.get(position).getImageURL()).into(holder.iv_Basket_CardView_Child);
             String nameAndDescription = "<b><font color='black'>" + list.get(position).getName() + "</font></b> " + list.get(position).getDescription();
             holder.tv_productName_Basket_CardView_Child.setText(Html.fromHtml(nameAndDescription));
 
-            holder.tv_Price_Basket_CardView_Child.setText(product.getPrice() + " TL");
-            if (product.getFastDelivery()) {
+            holder.tv_ProductAmount_Basket_CardView_Child.setText(list.get(position).getAmount() + "");
+            holder.tv_Price_Basket_CardView_Child.setText(list.get(position).getPrice() * list.get(position).getAmount() + " TL");
+
+
+            //Bu kısmı yazmazsak listeye yeni element eklendiğinde butonların rengi farklı olacak
+            if (list.get(position).getAmount() < list.get(position).getStock()) {
+                holder.iv_Increase_CardView_Child.setClickable(true);
+                holder.iv_Increase_CardView_Child.setImageResource(R.drawable.ic_increase);
+
+                holder.iv_Decrease_CardView_Child.setClickable(true);
+                holder.iv_Decrease_CardView_Child.setImageResource(R.drawable.ic_decrease);
+
+                if (list.get(position).getAmount() == 1) {
+                    holder.iv_Decrease_CardView_Child.setClickable(false);
+                    holder.iv_Decrease_CardView_Child.setImageResource(R.drawable.ic_decrease_disabled);
+                }
+            } else {
+                holder.iv_Increase_CardView_Child.setClickable(false);
+                holder.iv_Increase_CardView_Child.setImageResource(R.drawable.ic_increase_disabled);
+
+                holder.iv_Decrease_CardView_Child.setClickable(true);
+                holder.iv_Decrease_CardView_Child.setImageResource(R.drawable.ic_decrease);
+            }
+
+            if (list.get(position).getFastDelivery()) {
                 Spannable str = new SpannableString(mActivity.getString(R.string.fast_delivery));
                 str.setSpan(new ForegroundColorSpan(mActivity.getResources().getColor(R.color.green_weird)), 0, str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 holder.tv_FastDelivery_Basket_CardView_Child.setText(TextUtils.concat(str, ": ", Html.fromHtml("<font color='black'>1 gün içinde kargoda</font>")));
@@ -93,13 +118,15 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
         holder.iv_deleteProduct_Basket_CardView_Child.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mActivity, position + "", Toast.LENGTH_SHORT).show();
 
                 mActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        removeItem(list.get(position));
 
+                        removeItem(list.get(position));
+                        updateParentCheckbox();
+
+                        ((BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
 
                     }
                 });
@@ -123,12 +150,13 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
                         if (list.get(position).getAmount() < stock) {
 
                             list.get(position).setAmount(list.get(position).getAmount() + 1);
+                            list.get(position).setStock(stock);
 
                             if (list.get(position).getAmount() == stock) {
                                 holder.iv_Increase_CardView_Child.setClickable(false);
                                 holder.iv_Increase_CardView_Child.setImageResource(R.drawable.ic_increase_disabled);
                             }
-
+                            ((BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
                             holder.tv_ProductAmount_Basket_CardView_Child.setText(list.get(position).getAmount() + "");
                             holder.tv_Price_Basket_CardView_Child.setText(df.format(list.get(position).getAmount() * list.get(position).getPrice()) + " TL");
                         } else {
@@ -142,6 +170,7 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
                         holder.pb_CardView_Child.setVisibility(View.INVISIBLE);
                         holder.tv_ProductAmount_Basket_CardView_Child.setVisibility(View.VISIBLE);
 
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -149,11 +178,14 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
 
                         holder.tv_ProductAmount_Basket_CardView_Child.setText(list.get(position).getAmount() + "");
                         holder.tv_Price_Basket_CardView_Child.setText(df.format(list.get(position).getAmount() * list.get(position).getPrice()) + " TL");
+                        ((BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
 
                         holder.pb_CardView_Child.setVisibility(View.INVISIBLE);
                         holder.tv_ProductAmount_Basket_CardView_Child.setVisibility(View.VISIBLE);
                     }
                 });
+
+
             }
         });
 
@@ -171,13 +203,16 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
                         holder.iv_Decrease_CardView_Child.setClickable(false);
                         holder.iv_Decrease_CardView_Child.setImageResource(R.drawable.ic_decrease_disabled);
                     }
+                    ((BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
                     holder.tv_ProductAmount_Basket_CardView_Child.setText(list.get(position).getAmount() + "");
                     holder.tv_Price_Basket_CardView_Child.setText(df.format(list.get(position).getAmount() * list.get(position).getPrice()) + " TL");
 
                 } else {
                     holder.iv_Decrease_CardView_Child.setClickable(false);
                     holder.iv_Decrease_CardView_Child.setImageResource(R.drawable.ic_decrease_disabled);
+                    ((BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
                 }
+
             }
         });
 
@@ -185,39 +220,44 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
             @Override
             public void onClick(View view) {
 
-                if(list.get(position).isChecked()){
+                if (list.get(position).isChecked()) {
 
                     holder.cb_Basket_CardView_Child.setChecked(false);
                     list.get(position).setChecked(false);
 
-                }else{
+
+                } else {
                     holder.cb_Basket_CardView_Child.setChecked(true);
                     list.get(position).setChecked(true);
                 }
 
-
-                boolean allCheck = false;
-
                 for (BasketParentItem b : Basket.basketList) {
+
                     ArrayList<MyProduct> tempList = b.getChildItemList();
 
-                    if (tempList.contains(list.get(position)) ) {
+                    if (tempList.contains(list.get(position))) {
 
-                        for (MyProduct mP : tempList) {
+                        boolean allChecked = true;
 
-                            if(mP.isChecked()){
-                                allCheck = true;
+                        for (MyProduct m : tempList) {
+
+                            if (!m.isChecked()) {
+                                allChecked = false;
                             }
+
                         }
 
-                        if(!allCheck){
-                            //set parent uncheck
+                        if (allChecked) {
+                            b.setChecked(true);
+                        } else {
                             b.setChecked(false);
                         }
 
                     }
 
                 }
+
+                ((BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT)).updateTotalPrice();
                 notifyDataSetChanged();
                 notifyDataChangeSetChildAndParent();
 
@@ -262,40 +302,35 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
 
             boolean temp = b.getChildItemList().remove(myProduct);
 
-            if(temp){
+            if (temp) {
+                myProduct.setAmount(1);
+                myProduct.setChecked(true);
 
                 Basket.bestSeller.add(myProduct);
                 if (b.getChildItemList().isEmpty()) {
                     //remove basketparent item from basket parent
                     Basket.basketList.remove(b);
                 }
-                notifyDataChangeSetChildAndParent();
 
+                notifyDataChangeSetChildAndParent();
                 return;
             }
-
         }
 
     }
 
-    public void checkUncheck(MyProduct myProduct) {
-
-        boolean allCheck = false;
+    //updates parent checkbox by checking child items
+    public void updateParentCheckbox() {
 
         for (BasketParentItem b : Basket.basketList) {
+
             ArrayList<MyProduct> tempList = b.getChildItemList();
 
-            if (tempList.contains(myProduct)) {
+            if (tempList.size() == 1) {
 
-                for (MyProduct mP : tempList) {
-
-                    if(mP.isChecked()){
-                        allCheck = true;
-                    }
-                }
-
-                if(!allCheck){
-                    //set parent uncheck
+                if (tempList.get(0).isChecked()) {
+                    b.setChecked(true);
+                } else {
                     b.setChecked(false);
                 }
 
@@ -303,13 +338,12 @@ public class BasketRecyclerViewAdapterChild extends RecyclerView.Adapter<BasketR
 
         }
 
-        notifyDataChangeSetChildAndParent();
     }
 
-   private void notifyDataChangeSetChildAndParent(){
-       BasketFragment basketFragment = (BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT);
-       basketFragment.basketNotifyDataSetChanged();
-       basketFragment.bestSellerNotifyDataSetChanged();
+    private void notifyDataChangeSetChildAndParent() {
+        BasketFragment basketFragment = (BasketFragment) ((MainActivity) mActivity).findFragment(MainActivity.BASKET_FRAGMENT);
+        basketFragment.basketNotifyDataSetChanged();
+        basketFragment.bestSellerNotifyDataSetChanged();
     }
 
 

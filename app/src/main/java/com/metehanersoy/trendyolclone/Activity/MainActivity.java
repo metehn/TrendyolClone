@@ -20,6 +20,7 @@ import com.metehanersoy.trendyolclone.Fragment.AccountFragmentAuth;
 import com.metehanersoy.trendyolclone.Fragment.BasketFragment;
 import com.metehanersoy.trendyolclone.Fragment.FavoritesFragment;
 import com.metehanersoy.trendyolclone.Fragment.HomePageFragment;
+import com.metehanersoy.trendyolclone.Fragment.PaymentFragment;
 import com.metehanersoy.trendyolclone.Fragment.TrendyolGoFragment;
 import com.metehanersoy.trendyolclone.R;
 
@@ -35,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String FAVORITES_FRAGMENT = "FavoritesFragment";
     public static final String TRENDYOL_GO_FRAGMENT = "TrendyolGoFragment";
     public static final String HOME_PAGE_FRAGMENT = "HomePageFragment";
-    public static final String CONTROL_FRAGMENT = "ControlFragment";
+    public static final String PAYMENT_FRAGMENT = "PaymentFragment";
 
     BottomNavigationView bottomNavigationView;
-    FrameLayout fl_main;
-    FragmentManager fragmentManager;
+    FragmentManager fragmentManager, fragmentManagerParent;
+
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -57,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize fragment manager
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.ll_1_FragmentAccount, new HomePageFragment(), HOME_PAGE_FRAGMENT).commit();
+        fragmentManager.beginTransaction().replace(R.id.fl_1_FragmentAccount, new HomePageFragment(), HOME_PAGE_FRAGMENT).commit();
+
+        fragmentManagerParent = getSupportFragmentManager();
 
         runOnUiThread(new Runnable() {
             @Override
@@ -105,9 +108,21 @@ public class MainActivity extends AppCompatActivity {
     //Initialize ui objects
     public void initializeUiObjects() {
         bottomNavigationView = findViewById(R.id.ll_2_FragmentAccount);
-        fl_main = findViewById(R.id.ll_1_FragmentAccount);
     }
 
+    public void showSignInFragment(){
+
+        fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_bottom).add(R.id.fl_parentMainActivity, new PaymentFragment(this), PAYMENT_FRAGMENT).commit();
+
+    }
+    public void dismissSignInFragment(){
+       Fragment f = fragmentManager.findFragmentByTag(PAYMENT_FRAGMENT);
+
+       if(f != null){
+           fragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in_bottom, R.anim.slide_out_bottom).remove(f).commit();
+       }
+
+    }
 
     public void addFragment(String tag) {
 
@@ -118,27 +133,27 @@ public class MainActivity extends AppCompatActivity {
 
             switch (tag) {
                 case ACCOUNT_FRAGMENT:
-                    fragmentManager.beginTransaction().add(R.id.ll_1_FragmentAccount, new AccountFragment(), ACCOUNT_FRAGMENT).commit();
+                    fragmentManager.beginTransaction().add(R.id.fl_1_FragmentAccount, new AccountFragment(), ACCOUNT_FRAGMENT).commit();
                     return;
 
                 case ACCOUNT_FRAGMENT_AUTH:
-                    fragmentManager.beginTransaction().add(R.id.ll_1_FragmentAccount, new AccountFragmentAuth(), ACCOUNT_FRAGMENT_AUTH).commit();
+                    fragmentManager.beginTransaction().add(R.id.fl_1_FragmentAccount, new AccountFragmentAuth(), ACCOUNT_FRAGMENT_AUTH).commit();
                     return;
 
                 case BASKET_FRAGMENT:
-                    fragmentManager.beginTransaction().add(R.id.ll_1_FragmentAccount, new BasketFragment(), BASKET_FRAGMENT).commit();
+                    fragmentManager.beginTransaction().add(R.id.fl_1_FragmentAccount, new BasketFragment(), BASKET_FRAGMENT).commit();
                     return;
 
                 case FAVORITES_FRAGMENT:
-                    fragmentManager.beginTransaction().add(R.id.ll_1_FragmentAccount, new FavoritesFragment(), FAVORITES_FRAGMENT).commit();
+                    fragmentManager.beginTransaction().add(R.id.fl_1_FragmentAccount, new FavoritesFragment(), FAVORITES_FRAGMENT).commit();
                     return;
 
                 case TRENDYOL_GO_FRAGMENT:
-                    fragmentManager.beginTransaction().add(R.id.ll_1_FragmentAccount, new TrendyolGoFragment(), TRENDYOL_GO_FRAGMENT).commit();
+                    fragmentManager.beginTransaction().add(R.id.fl_1_FragmentAccount, new TrendyolGoFragment(), TRENDYOL_GO_FRAGMENT).commit();
                     return;
 
                 case HOME_PAGE_FRAGMENT:
-                    fragmentManager.beginTransaction().add(R.id.ll_1_FragmentAccount, new HomePageFragment(), HOME_PAGE_FRAGMENT).commit();
+                    fragmentManager.beginTransaction().add(R.id.fl_1_FragmentAccount, new HomePageFragment(), HOME_PAGE_FRAGMENT).commit();
                     return;
 
             }
@@ -199,6 +214,9 @@ public class MainActivity extends AppCompatActivity {
     public Fragment findFragment(String tag){
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
         return  fragment;
+    }
+    public void addFragment(String tag, Fragment fragment){
+        fragmentManager.beginTransaction().add(fragment, tag).commit();
     }
 
 }
