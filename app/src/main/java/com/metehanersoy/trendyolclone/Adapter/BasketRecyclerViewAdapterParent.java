@@ -36,7 +36,6 @@ public class BasketRecyclerViewAdapterParent extends RecyclerView.Adapter<Basket
 
     private static final DecimalFormat df = new DecimalFormat("0.0");
 
-
     public BasketRecyclerViewAdapterParent(Activity mActivity, ArrayList<BasketParentItem> list) {
         this.mActivity = mActivity;
         this.list = list;
